@@ -15,10 +15,6 @@ class librosmodel {
             $sql .= " WHERE `Nombre` = ?";
         }
 
-        if($forma) {
-            $sql.= ' DESC';
-        }
-
         if($orderBy) {
             switch($orderBy) {
                 case 'Nombre':
@@ -34,6 +30,10 @@ class librosmodel {
                     $sql .= ' ORDER BY id_usuario';
                     break;
             }
+        }
+
+        if($forma=='DESC') {
+            $sql.= ' DESC';
         }
 
         $query = $this->db->prepare($sql);
